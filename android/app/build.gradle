@@ -3,10 +3,13 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'io.gitlab.arturbosch.detekt'
-    id 'com.facebook.react'
 }
+
 apply from: rootProject.file('dependencies.gradle')
 apply from: rootProject.file('detekt.gradle')
+
+// Add the React plugin
+apply plugin: "com.facebook.react"
 
 android {
     namespace 'com.epam.mobitru'
@@ -40,6 +43,11 @@ android {
     }
 }
 
+repositories {
+    // Add mavenCentral if not already declared at the project level
+    mavenCentral()
+}
+
 dependencies {
     implementation project(':networkModule')
     implementation project(':codeScanner')
@@ -57,12 +65,13 @@ dependencies {
     groupie()
     implementation tools.timber
 
-    implementation "com.facebook.react:react-android"
-    implementation "com.facebook.react:hermes-android"
-
     unitTestingGroup()
 
     instrumentationTestingGroup()
+
+    // Add React dependencies
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
 }
 
 react {
