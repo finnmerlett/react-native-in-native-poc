@@ -4,7 +4,13 @@ pluginManagement {
         google()
         mavenCentral()
     }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
 }
+
+plugins {
+    id("com.facebook.react.settings")
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -15,6 +21,11 @@ dependencyResolutionManagement {
         }
     }
 }
+
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    ex.autolinkLibrariesFromCommand()
+}
+
 rootProject.name = "Mobitru"
 include ':app'
 include ':networkModule'
