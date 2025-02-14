@@ -28,7 +28,7 @@ def isNonStable = { String version ->
 
 //disallow release candidates as upgradable versions from stable versions
 tasks.named("dependencyUpdates").configure {
-// Enable below to perform deep check. Loooong task.
+// Enable below to perform deep check. Very long task.
 // @See https://github.com/ben-manes/gradle-versions-plugin#constraints
 //    checkConstraints = true
 //    checkBuildEnvironmentConstraints = true
