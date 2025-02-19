@@ -4,8 +4,12 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
     id 'io.gitlab.arturbosch.detekt'
 }
+
 apply from: rootProject.file('dependencies.gradle')
 apply from: rootProject.file('detekt.gradle')
+
+// Add the React plugin
+// apply plugin: "com.facebook.react"
 
 android {
     namespace 'com.epam.mobitru'
@@ -27,17 +31,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    // compileOptions {
+    //     sourceCompatibility JavaVersion.VERSION_17
+    //     targetCompatibility JavaVersion.VERSION_17
+    // }
+    // kotlinOptions {
+    //     jvmTarget = '17'
+    // }
     buildFeatures {
         viewBinding true
     }
 }
+
+// repositories {
+//     mavenCentral()
+// }
 
 dependencies {
     implementation project(':networkModule')
@@ -59,4 +67,12 @@ dependencies {
     unitTestingGroup()
 
     instrumentationTestingGroup()
+
+    // Add React dependencies
+    // implementation("com.facebook.react:react-android")
+    // implementation("com.facebook.react:hermes-android")
 }
+
+// react {
+//     autolinkLibrariesWithApp()
+// }
